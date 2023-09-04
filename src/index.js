@@ -9,6 +9,8 @@ root.render(
     <App />
   </React.StrictMode>
 );
+//최상위부모를 랜더해줌. 그래서 app
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
