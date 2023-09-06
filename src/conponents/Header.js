@@ -1,35 +1,32 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-
+// /www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
 const Header = () => {
 
     const [search, setSearch] = useState()
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
+ 
+ 
 
     const onChangeSearch = (e) => {
         e.preventDefault()
         setSearch(e.target.value);
     }
 
-const onClick =(e)=>{
-    e.preventDefault()
-    // fetch("www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-    // .then((response) => response.json());
-    fetch("www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: "Test",
-          body: "Testing!",
-          userId: 1,
-        }),
-      })
-        .then((response) => response.json())
-}
+    const getData = async () => {
+    const res = await fetch(
+      "https://jsonplaceholder.typicode.com/comments"
+    ).then((res) => res.json());
 
+    
+   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getData();
+    }, 1500);
+  }, []);
+ 
     return (
         <>
             <header>
@@ -39,7 +36,7 @@ const onClick =(e)=>{
                 </div>
                 <form className="search">
                     <input value={search} onChange={onChangeSearch} placeholder='Search your cocktail' type="text" />
-                    <button onClick={onClick}><i className="fa-solid fa-magnifying-glass"></i></button>
+                    <button  ><i className="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </header>
         </>
